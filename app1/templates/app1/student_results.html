@@ -1,0 +1,55 @@
+{% extends 'app1/base.html'%}
+{% block content %}
+<!-- student_detail.html -->
+<style>
+  th,td {
+    padding: 1rem;
+    border: 1px solid black;
+  }
+  li {
+    padding: 1rem;
+    
+  }
+</style>
+<body>
+  
+  <h1>{{ res.student }}</h1>
+  <!-- approval  -->
+  <ul>
+    <li>Enrollment Number: {{ res.student.enrollment_number }}</li>
+    <li>Date of Birth: {{ res.student.date_of_birth }}</li>
+    <li>Email: {{ res.student.email }}</li>
+    <li>Phone Number: {{ res.student.phone_number }}</li>
+    <li>Course Name: {{ res.course_name }}</li>
+    <li>Course Sem: {{res.course_sem}}</li>
+  </ul>
+  
+  <h2>Results</h2>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>Semester1</th>
+        <th>Semester2</th>
+        <th>Semester3</th>
+        <th>Semester4</th>
+        <th>Semester5</th>
+        <th>Semester6</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>{{res.result_sem1}}</td>
+        <td>{{res.result_sem2}}</td>
+          <td>{{res.result_sem3}}</td>
+          <td>{{res.result_sem4}}</td>
+          <td>{{res.result_sem5}}</td>
+          <td>{{res.result_sem6}}</td>
+        </tr>
+      </tbody>
+    </table>
+    
+    {% endblock %}
+    
+    
+  </body>

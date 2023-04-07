@@ -1,0 +1,135 @@
+{% extends 'app1/base.html'%}
+{% block content %}
+
+<body>
+<div class="content">
+    
+
+    <!-- <form method="POST">
+      {% csrf_token %}
+      {{ form.as_p }}
+      <input class="btn btn-primary" type="submit" value="Submit">
+    </form> -->
+    {{ course.get_course_name_display }}
+
+    <form method="post" class="container">
+        <div class="row mb-3">
+
+            <div class="col-md-6">
+                <div class="heading">Info of 
+                    {{ students.first_name }} 
+                    {{ students.last_name }}</div>
+            </div>
+        </div>
+        {% csrf_token %}
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="enrollment_number" class="form-label">Enrollment Number:</label>
+                <input type="text" id="enrollment_number" value="{{ students.enrollment_number }}" name="enrollment_number" class="form-control" maxlength="10"
+                    required>
+            </div>
+            <div class="col-md-6">
+                <label for="roll_number" class="form-label">Roll Number:</label>
+                <input type="text" id="roll_number" value="{{ students.roll_number }}" name="roll_number" class="form-control" maxlength="4">
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="first_name" class="form-label">First Name:</label>
+                <input type="text" id="first_name" value="{{ students.first_name }}" name="first_name" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label for="middle_name" class="form-label">Middle Name:</label>
+                <input type="text" id="middle_name" value="{{ students.middle_name }}" name="middle_name" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="last_name" class="form-label">Last Name:</label>
+                <input type="text" id="last_name" value="{{ students.last_name }}" name="last_name" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+                <label for="gender" class="form-label">Gender:</label>
+                <select class="form-control" id="gender" name="gender">
+                    <option value="{{students.gender}}">{{students.gender}}</option>
+                    <option value="M">Male</option>
+                    <option value="F">Female</option>
+                    <option value="O">Other</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+
+            <div class="col-md-6">
+                <label for="date_of_birth" class="form-label">Date of Birth:</label>
+                <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+            </div>
+        </div>
+
+        <div class="row mb-3">
+            <div class="col-md-6">
+                <label for="phone_number" class="form-label">Phone Number:</label>
+                <input type="text" id="phone_number" value="{{ students.phone_number }}" name="phone_number" class="form-control" maxlength="10" required>
+            </div>
+            <div class="col-md-6">
+                <label for="email" class="form-label">Email:</label>
+                <input type="email" id="email" value="{{ students.email }}" name="email" class="form-control" required>
+            </div>
+        </div>
+        <div class="row md-3">
+            <div class="col-md-6">
+                <label for="course_name" class="form-label">Course Name:</label>
+                <select class="form-control" id="course_name" name="course_name">
+                    <option value="{{ students.course.course_name }}">{{ students.course.course_name }}</option>
+                    <option value="CO">Computer Engineering</option>
+                    <option value="ME">Mechanical Engineering</option>
+                </select>
+
+            </div>
+            <div class="col-md-6">
+
+                <label for="course_sem" class="form-label">Course Semester:</label>
+                <select class="form-control" id="course_sem" name="course_sem">
+                    <option value="{{ students.course.course_sem }}">{{ students.course.course_sem }}</option>
+                    <option value="1">First Sem</option>
+                    <option value="2">Second Sem</option>
+                    <option value="3">Third Sem</option>
+                    <option value="4">Fourth Sem</option>
+                    <option value="5">Fifth Sem</option>
+                    <option value="6">Sixth Sem</option>
+                </select>
+            </div>
+        </div>
+        <div class="row mb-3">
+            <div class="col-md-12">
+                <label for="address" class="form-label">Address:</label>
+                <textarea id="address" name="address" class="form-control" rows="3" required>{{ students.address }}</textarea>
+            </div>
+        </div>
+        <div class="row mb-3" >
+
+            <div class="col-md-12">
+                <label for="{{ student.is_approved.auto_id }}">Is Approved:</label>
+                <input type="checkbox" name="is_approved" id="id_is_approved" {% if student.is_approved %}checked{% endif %}>
+            </div>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+    <form action="{% url 'delete_student' students.enrollment_number %}" method="POST" class="container">
+        {% csrf_token %}
+        <button type="submit" class="btn btn-primary">Delete</button>
+    </form>
+</div>
+    <script>
+        document.getElementById("date_of_birth").defaultValue = "{{ students.date_of_birth|date:'Y-m-d' }}"; 
+
+        // document.getElementById("gender").defaultValue = "{{ students.gender }}"; 
+        // document.getElementById("gender").isDefaultNamespace = "{{ students.gender }}"; 
+    </script>
+</body>
+{% endblock %}

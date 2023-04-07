@@ -1,0 +1,109 @@
+{% extends 'app1/base.html'%}
+{% block content %}
+<div class="content">
+
+    <!-- <form method="POST" class="container">
+
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Submit</button>
+    </form> -->
+
+
+    <div class="content">
+        <form method="post" class="container">
+            {% csrf_token %}
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="student">Student:</label>
+                        <input type="text" class="form-control" id="student" name="student" readonly
+                            value="{{students.student.first_name}} {{students.student.last_name}}" required>
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="course_name">Course Name:</label>
+                        <select class="form-control" id="course_name" name="course_name" required>
+                            <option value="CO">Computer Engineering</option>
+                            <option value="ME">Mechanical Engineering</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="course_sem">Course Semester:</label>
+                        <select class="form-control" id="course_sem" name="course_sem" required>
+                            <option value="1">First Sem</option>
+                            <option value="2">Second Sem</option>
+                            <option value="3">Third Sem</option>
+                            <option value="4">Fourth Sem</option>
+                            <option value="5">Fifth Sem</option>
+                            <option value="6">Sixth Sem</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="result_sem1">Result Semester 1:</label>
+                        <input type="text" value="{{students.result_sem1}}" class="form-control" id="result_sem1"
+                            name="result_sem1">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="result_sem2">Result Semester 2:</label>
+                        <input type="text" value="{{students.result_sem2}}" class="form-control" id="result_sem2"
+                            name="result_sem2">
+                    </div>
+                </div>
+            </div>
+
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="result_sem3">Result Semester 3:</label>
+                        <input type="text" value="{{students.result_sem3}}" class="form-control" id="result_sem3"
+                            name="result_sem3">
+
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="result_sem4">Result Semester 4:</label>
+                        <input type="text" value="{{students.result_sem4}}" class="form-control" id="result_sem4"
+                            name="result_sem4">
+                    </div>
+                </div>
+            </div>
+
+            <div class="row mb-3">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="result_sem5">Result Semester 5:</label>
+                        <input type="text" value="{{students.result_sem5}}" class="form-control" id="result_sem5"
+                            name="result_sem5">
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label for="result_sem6">Result Semester 6:</label>
+                        <input type="text" value="{{students.result_sem6}}" class="form-control" id="result_sem6"
+                            name="result_sem6">
+                    </div>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+
+    </div>
+
+    <!-- <input type="text" name="first_name" value="{{student.first_name}}"> -->{% endblock %}

@@ -1,0 +1,62 @@
+{% extends 'app1/base.html'%}
+{% block content %}
+{% csrf_token %}
+<!-- {% load static %} -->
+
+<head>
+    <title>Student Information</title>
+    <!-- <link rel="stylesheet" href="{% static 'app1/master.css' %}"> -->
+</head>
+
+<body>
+    <div class="content">
+
+        <div class="heading">Student Information [Approved]</div>
+        <table class="table">
+            <tr scope="row">
+                <th scope="col">Enrollment Number</th>
+                <th scope="col">Roll Number</th>
+                <th scope="col">First Name</th>
+                <th scope="col">Middle Name</th>
+                <th scope="col">Last Name</th>
+                <th scope="col">Course</th>
+                <th scope="col">Email</th>
+                <th scope="col">Phone Number</th>
+                <th scope="col">Date of Birth</th>
+                <th scope="col">Info</th>
+                <th scope="col">Results</th>
+            </tr>
+
+            {% for student in students %}
+
+            {% if student.is_approved %}
+            <tr scope="row">
+                <td scope="col" id="enrollment_number" name="enrollment_number">{{ student.enrollment_number }}</td>
+                <td scope="col" id="roll_number" name="roll_number">{{ student.roll_number }}</td>
+                <td scope="col" id="first_name" name="first_name">{{ student.first_name }}</td>
+                <td scope="col" id="middle_name" name="middle_name">{{ student.middle_name }}</td>
+                <td scope="col" id="last_name" name="last_name">{{ student.last_name }}</td>
+                <td scope="col" id="last_name" name="last_name">{{ student.course.get_course_name_display }}</td>
+                <td scope="col" id="email" name="email">{{ student.email }}</td>
+                <td scope="col" id="phone_number" name="phone_number">{{ student.phone_number }}</td>
+                <td scope="col" id="date_of_birth" name="date_of_birth">{{ student.date_of_birth }}</td>
+                <!-- <td> <input contenteditable="False" type="checkbox" name="is_approved" id="is_approved" checked="{{ student.is_approved }}"></td> -->
+
+                <td scope="col">
+
+                    <a href="{% url 'edit_student_info' student.enrollment_number %}">Edit</a>
+
+                </td>
+                <td scope="col">
+
+                    <a href="{% url 'edit_course_results' student.enrollment_number %}">Results</a>
+
+                </td>
+            </tr>
+
+            {% endif %}
+            {% endfor %}
+        </table>
+    </div>
+</body>
+{% endblock %}

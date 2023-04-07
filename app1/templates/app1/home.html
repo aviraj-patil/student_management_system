@@ -1,0 +1,29 @@
+{% extends 'app1/base.html'%}
+{% block content %}   
+{% load static %} 
+<head>
+    <link rel="stylesheet" href="{% static 'app1/master.css' %}">
+</head>
+<body>
+    <div class="container" style="display: grid; place-content: center; height: 90ch;">
+        <center>
+
+            <img src="{% static 'app1/gpr_logo.jpg' %}" alt="GPR logo" style="min-width: 10rem; max-width: 25%;">
+            <div class="heading">Government Polytechnic Ratnagiri</div>
+            <p style="font-size: 2rem;">
+
+                Government Polytechnic, Ratnagiri, Near Thiba palace Road, Ratnagiri., Ratnagiri, India, Maharashtra
+            </p>
+            <a href="https://office.gpratnagiri@dtemaharashtra.gov.in" style="font-size: 1.7rem;" >
+
+                office.gpratnagiri@dtemaharashtra.gov.in
+            </a>
+            <p style="font-size: 1.5rem;" >
+                gpratnagiri.org
+
+            </p>
+        </div>
+    </center>
+    </div>
+</body>
+{% endblock %}

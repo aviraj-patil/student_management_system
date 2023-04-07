@@ -1,0 +1,111 @@
+{% extends 'app1/base.html'%}{% block content %}
+{% load static %}
+    <head>
+        <link rel="stylesheet" href="{% static 'app1/master.css' %}">
+    </head>
+    <body>
+      <div class="content">
+
+        <!-- <form method="POST">
+          {% csrf_token %}
+          {{ form.as_p }}
+          <input class="btn btn-primary" type="submit" value="Submit">
+        </form> -->
+        
+        <form method="post" class="container">
+          <div class="row mb-3">
+  
+            <div class="col-md-6">
+          <div class="heading">Student Admission Form</div>
+        </div></div>
+          {% csrf_token %}
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="enrollment_number" class="form-label">Enrollment Number:</label>
+              <input type="text" id="enrollment_number" name="enrollment_number" class="form-control" maxlength="10" required>
+            </div>
+            <div class="col-md-6">
+              <label for="roll_number" class="form-label">Roll Number:</label>
+              <input type="text" id="roll_number" name="roll_number" class="form-control" maxlength="4">
+            </div>
+          </div>
+        
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="first_name" class="form-label">First Name:</label>
+              <input type="text" id="first_name" name="first_name" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="middle_name" class="form-label">Middle Name:</label>
+              <input type="text" id="middle_name" name="middle_name" class="form-control" required>
+            </div>
+          </div>
+        
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="last_name" class="form-label">Last Name:</label>
+              <input type="text" id="last_name" name="last_name" class="form-control" required>
+            </div>
+            <div class="col-md-6">
+              <label for="gender" class="form-label">Gender:</label>
+              <select class="form-control" id="gender" name="gender">
+                <option value="M">Male</option>
+                <option value="F">Female</option>
+                <option value="O">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+
+            <div class="col-md-6">
+              <label for="date_of_birth" class="form-label">Date of Birth:</label>
+              <input type="date" id="date_of_birth" name="date_of_birth" class="form-control" required>
+            </div>
+          </div>
+          
+          <div class="row mb-3">
+            <div class="col-md-6">
+              <label for="phone_number" class="form-label">Phone Number:</label>
+              <input type="text" id="phone_number" name="phone_number" class="form-control"  maxlength="10" required>
+            </div>
+            <div class="col-md-6">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" id="email" name="email" class="form-control" required>
+            </div>
+          </div>
+          <div class="row md-3">
+            <div class="col-md-6">
+              <label for="course_name" class="form-label">Course Name:</label>
+              <select class="form-control" id="course_name" name="course_name">
+                <option value="CO">Computer Engineering</option>
+                <option value="ME">Mechanical Engineering</option>
+              </select>
+             
+            </div>
+            <div class="col-md-6">
+
+    <label for="course_sem" class="form-label">Course Semester:</label>
+    <select class="form-control" id="course_sem" name="course_sem">
+      <option value="1">First Sem</option>
+      <option value="2">Second Sem</option>
+      <option value="3">Third Sem</option>
+      <option value="4">Fourth Sem</option>
+      <option value="5">Fifth Sem</option>
+      <option value="6">Sixth Sem</option>
+    </select>
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-md-12">
+              <label for="address" class="form-label">Address:</label>
+              <textarea id="address" name="address" class="form-control" rows="3" required></textarea>
+            </div>
+          </div>
+        
+          <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+        
+        {% endblock %}
+      </div>
+    </body>
